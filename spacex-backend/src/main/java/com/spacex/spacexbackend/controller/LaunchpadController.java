@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("launchpads")
@@ -21,13 +22,18 @@ public class LaunchpadController {
         return launchpadService.updateAllLaunchpadData();
     }
 
-    @GetMapping("fetchAll")
-    public ResponseEntity<List<LaunchpadEto>> fetchAllLaunchpads() {
-        return launchpadService.fetchAllLaunchpadData();
+    @GetMapping("fetchAll/{pageNumber}/{records}")
+    public ResponseEntity<List<LaunchpadEto>> fetchAllLaunchpads(@PathVariable Integer pageNumber, @PathVariable Integer records) {
+        return launchpadService.fetchAllLaunchpadData(pageNumber, records);
     }
 
     @GetMapping("fetch/{id}")
-    public ResponseEntity<LaunchpadEto> fetchLaunchpad(@PathVariable String id){
+    public ResponseEntity<LaunchpadEto> fetchLaunchpad(@PathVariable String id) {
         return launchpadService.fetchOneLaunchpadData(id);
+    }
+
+    @GetMapping("fetchByFilter")
+    public ResponseEntity<List<LaunchpadEto>> fetchFilteredLaunchpads(@RequestParam Map<String, String> filters) {
+        return launchpadService.fetchFilteredLaunchpads(filters);
     }
 }

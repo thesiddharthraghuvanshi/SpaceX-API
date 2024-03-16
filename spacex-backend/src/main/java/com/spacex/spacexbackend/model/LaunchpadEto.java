@@ -16,11 +16,11 @@ public class LaunchpadEto {
 
     private String name;
 
-    private  String fullName;
+    private String fullName;
 
     private String status;
 
-    private  String locality;
+    private String locality;
 
     private String region;
 
