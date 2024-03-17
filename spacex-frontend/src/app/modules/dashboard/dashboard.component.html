@@ -7,7 +7,19 @@
             <app-table (rowClickEvent)="onRowClicked($event)" [filters]="filters"></app-table>
         </div>
         <div class="w-25">
-            <app-pie-chart [datasetLabels]="datasetLabels" [data]="data" [chartLabel]="chartLabel"></app-pie-chart>
+            <div class="mt-3">
+                <button mat-raised-button color="warn" [matMenuTriggerFor]="charts">Charts</button>
+                <mat-menu #charts="matMenu">
+                    <button mat-menu-item (click)="loadPieChart()">Pie Chart</button>
+                    <button mat-menu-item (click)="loadBarChart()">Bar Chart</button>
+                </mat-menu>
+            </div>
+            <div *ngIf="displayPieChart">
+                <app-pie-chart [datasetLabels]="datasetLabels" [data]="data" [chartLabel]="chartLabel"></app-pie-chart>
+            </div>
+            <div *ngIf="!displayPieChart">
+                <app-bar-chart [datasetLabels]="datasetLabels" [data]="data" [chartLabel]="chartLabel"></app-bar-chart>
+            </div>
         </div>
     </div>
 </div>

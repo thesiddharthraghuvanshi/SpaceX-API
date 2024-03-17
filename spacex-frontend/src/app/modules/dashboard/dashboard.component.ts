@@ -4,11 +4,16 @@ import { TableComponent } from '../../shared/components/table/table.component';
 import { PieChartComponent } from '../../shared/charts/pie-chart/pie-chart.component';
 import { FiltersBarComponent } from '../../shared/navbars/filters-bar/filters-bar.component';
 import { Filters } from '../../shared/models/filters.model';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { BarChartComponent } from '../../shared/charts/bar-chart/bar-chart.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatSlideToggleModule, TableComponent, PieChartComponent, FiltersBarComponent],
+  imports: [CommonModule, MatSlideToggleModule, TableComponent, PieChartComponent, BarChartComponent,
+    FiltersBarComponent, MatButtonModule, MatMenuModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -17,17 +22,24 @@ export class DashboardComponent {
   data = [100, 25];
   chartLabel = 'Ratio';
   filters!: Filters;
+  displayPieChart = true;
 
   constructor() { }
 
   onRowClicked(row: any): void {
-    this.datasetLabels = ['abc', 'cde'];
-    this.data = [50, 50];
-    this.chartLabel = 'Haha';
+    this.data = [row.launch_attempts, row.launch_successes];
   }
 
   onFiltersClickEvent(filters: Filters): void {
-    this.filters=filters;
+    this.filters = filters;
+  }
+
+  loadPieChart(): void {
+    this.displayPieChart = true;
+  }
+
+  loadBarChart(): void {
+    this.displayPieChart = false;
   }
 
 }

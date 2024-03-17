@@ -1,6 +1,7 @@
 package com.spacex.spacexbackend.model.eto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class LaunchpadEto {
 
     private String name;
 
+    @JsonProperty("full_name")
     private String fullName;
 
     private String status;
@@ -32,8 +34,10 @@ public class LaunchpadEto {
 
     private Double longitude;
 
+    @JsonProperty("launch_attempts")
     private Integer launchAttempts;
 
+    @JsonProperty("launch_successes")
     private Integer launchSuccesses;
 
     private List<String> launches;

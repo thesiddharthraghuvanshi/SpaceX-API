@@ -6,7 +6,6 @@ import { BaseChartDirective } from 'ng2-charts';
   selector: 'app-pie-chart',
   standalone: true,
   imports: [CommonModule, BaseChartDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './pie-chart.component.html',
   styleUrl: './pie-chart.component.scss'
 })

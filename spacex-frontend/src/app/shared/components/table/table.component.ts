@@ -8,12 +8,16 @@ import { LaunchpadService } from '../../services/launchpad.service';
 import { Launchpad } from '../../models/launchpad.model';
 import { CommonModule } from '@angular/common';
 import { Filters } from '../../models/filters.model';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DialogComponent } from '../dialog/dialog.component';
 
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatDialogModule, DialogComponent, MatTooltipModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -30,22 +34,28 @@ export class TableComponent implements OnChanges, AfterViewInit {
   @Output() rowClickEvent = new EventEmitter<any>();
   @Input() filters!: Filters;
 
-  constructor(private launchpadService: LaunchpadService) {
+  constructor(private launchpadService: LaunchpadService,
+    public dialog: MatDialog) {
     this.launchpadService.fetchAllLaunchpads(0, 5).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+
     });
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['filters']) {
+    if (changes['filters'] && changes['filters'].currentValue) {
       const filterChange: SimpleChange = changes['filters'];
       this.launchpadService.fetchFilteredLaunchpads(filterChange.currentValue).subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
     }
   }
@@ -71,6 +81,19 @@ export class TableComponent implements OnChanges, AfterViewInit {
     };
   }
 
+  openDialog(row: Launchpad): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: row
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  redirectToGoogleMaps(latitude: number, longitude: number): void {
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    window.open(googleMapsUrl, '_blank');
+  }
 
 }
 
