@@ -1,0 +1,27 @@
+.filters-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+    font-family: "courier new", monospace;
+    font-size: 16px;
+}
+
+mat-panel-title {
+    font-family: "courier new", monospace;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+mat-label {
+    font-family: "courier new", monospace;
+    font-size: 16px;
+}
+
+.apply {
+    font-family: "courier new", monospace;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.filters-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
+    margin-left: 8px;
+}

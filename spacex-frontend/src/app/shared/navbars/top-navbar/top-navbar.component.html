@@ -1,0 +1,33 @@
+<div class="spacex-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="spacex-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="spacx-app-name">
+            SpacX-API
+        </h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="spacex-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list class="mt-3">
+                <i class="bi bi-globe-americas m-5"></i>
+            </mat-nav-list>
+            <mat-nav-list class="mt-3 disabled">
+                <i class="bi bi-cpu m-5"></i>
+            </mat-nav-list>
+            <mat-nav-list class="mt-3 disabled">
+                <i class="bi bi-rocket-takeoff m-5"></i>
+            </mat-nav-list>
+            <mat-nav-list class="mt-3 disabled">
+                <i class="bi bi-people-fill m-5"></i>
+            </mat-nav-list>
+            <mat-nav-list class="mt-3 disabled">
+                <i class="bi bi-suitcase-lg-fill m-5"></i>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <app-dashboard></app-dashboard>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <div class="w-100 mt-3">
+        <app-filters-bar (filtersClickEvent)="onFiltersClickEvent($event)"></app-filters-bar>
+    </div>
+    <div class="w-100 d-flex">
+        <div class="w-75 m-3">
+            <app-table (rowClickEvent)="onRowClicked($event)" [filters]="filters"></app-table>
+        </div>
+        <div class="w-25">
+            <app-pie-chart [datasetLabels]="datasetLabels" [data]="data" [chartLabel]="chartLabel"></app-pie-chart>
+        </div>
+    </div>
+</div>

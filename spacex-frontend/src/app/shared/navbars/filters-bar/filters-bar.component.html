@@ -1,0 +1,40 @@
+<mat-accordion class="filters-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Filters
+            </mat-panel-title>
+            <mat-panel-description>
+                Click on this pannel to expand filters bar
+                <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Region</mat-label>
+                <input matInput formControlName="region">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>PageNumber</mat-label>
+                <input matInput type="number" min="1" formControlName="pageNumber">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Records</mat-label>
+                <input matInput type="number" min="1" formControlName="records">
+            </mat-form-field>
+
+            <button mat-raised-button color="accent" type="submit" class="mx-3">
+                <span class="apply">Search</span>
+            </button>
+        </form>
+
+    </mat-expansion-panel>
+</mat-accordion>
