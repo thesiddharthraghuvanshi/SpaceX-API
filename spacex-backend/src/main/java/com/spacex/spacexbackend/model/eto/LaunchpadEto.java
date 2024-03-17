@@ -1,4 +1,4 @@
-package com.spacex.spacexbackend.model;
+package com.spacex.spacexbackend.model.eto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,8 @@ public class LaunchpadEto {
     private String region;
 
     private String timezone;
+
+    private String details;
 
     private Double latitude;
 

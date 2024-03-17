@@ -1,7 +1,7 @@
 package com.spacex.spacexbackend.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.spacex.spacexbackend.model.LaunchpadEto;
+import com.spacex.spacexbackend.model.eto.LaunchpadEto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 

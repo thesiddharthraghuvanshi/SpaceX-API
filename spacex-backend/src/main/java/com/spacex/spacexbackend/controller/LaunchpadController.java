@@ -1,7 +1,7 @@
 package com.spacex.spacexbackend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.spacex.spacexbackend.model.LaunchpadEto;
+import com.spacex.spacexbackend.model.eto.LaunchpadEto;
 import com.spacex.spacexbackend.service.LaunchpadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("launchpads")
 public class LaunchpadController {

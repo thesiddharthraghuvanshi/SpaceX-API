@@ -1,4 +1,4 @@
-package com.spacex.spacexbackend.model;
+package com.spacex.spacexbackend.model.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

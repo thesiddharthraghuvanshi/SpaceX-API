@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spacex.spacexbackend.model.Launchpad;
-import com.spacex.spacexbackend.model.LaunchpadEto;
+import com.spacex.spacexbackend.model.eto.LaunchpadEto;
 import com.spacex.spacexbackend.repository.LaunchpadRepository;
 import com.spacex.spacexbackend.service.LaunchpadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +70,7 @@ public class LaunchpadServiceImpl implements LaunchpadService {
     @Override
     public ResponseEntity<List<LaunchpadEto>> fetchFilteredLaunchpads(Map<String, String> filters) {
         int pageNumber = Integer.parseInt(filters.getOrDefault("pageNumber", "0"));
-        int records = Integer.parseInt(filters.getOrDefault("records", "10"));
+        int records = Integer.parseInt(filters.getOrDefault("records", "5"));
         Pageable page = PageRequest.of(pageNumber, records);
 
         List<Launchpad> launchpads;
@@ -95,6 +95,6 @@ public class LaunchpadServiceImpl implements LaunchpadService {
     @Scheduled(cron = "0 */5 * * * *")
     public void execute() throws JsonProcessingException {
         System.out.println("DB update by scheduler at : " + LocalDateTime.now());
-        updateAllLaunchpadData();
+        //updateAllLaunchpadData();
     }
 }

@@ -1,6 +1,7 @@
 package com.spacex.spacexbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
@@ -49,6 +50,7 @@ public class Launchpad {
 
 //    @JsonDeserialize(using = FullNameDeserializer.class)
     @Column(name = "full_name")
+    @JsonProperty("full_name")
     private  String fullName;
 
 //    @Nonnull
@@ -63,16 +65,22 @@ public class Launchpad {
 
     private String timezone;
 
+    @Lob
+    @Column(length = 16000)
+    private String details;
+
     private Double latitude;
 
     private Double longitude;
 
 //    @JsonDeserialize(using = GenericFieldDeserializer.class)
     @Column(name = "launch_attempts")
+    @JsonProperty("launch_attempts")
     private Integer launchAttempts;
 
 //    @JsonDeserialize(using = GenericFieldDeserializer.class)
     @Column(name = "launch_successes")
+    @JsonProperty("launch_successes")
     private Integer launchSuccesses;
 
 //    @JsonDeserialize(using = UUIDListDeserializer.class)
@@ -81,9 +89,11 @@ public class Launchpad {
 //    @JsonDeserialize(using = UUIDListDeserializer.class)
 //    private List<UUID> rockets;
 
+    @Lob
     @Column(length = 21000)
     private List<String> launches;
 
+    @Lob
     @Column(length = 21000)
     private List<String> rockets;
 }
