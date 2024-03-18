@@ -22,7 +22,7 @@ export class DashboardComponent {
   data = [100, 25];
   chartLabel = 'Ratio';
   filters!: Filters;
-  displayPieChart = true;
+  displayPieChart = false;
 
   constructor() { }
 

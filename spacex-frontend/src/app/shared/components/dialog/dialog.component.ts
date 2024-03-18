@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { Launchpad } from '../../models/launchpad.model';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dialog',
@@ -14,6 +15,8 @@ import { CommonModule } from '@angular/common';
 })
 export class DialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Launchpad) { }
+  launchURL = environment.spaceX_launchURL;
+  rocketURL = environment.spaceX_rocketURL;
 
   getStatusClass(status: string): any {
     return {

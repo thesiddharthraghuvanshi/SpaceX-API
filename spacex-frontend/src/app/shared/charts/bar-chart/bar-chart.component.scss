@@ -1,6 +1,8 @@
 @media only screen and (max-width: 600px) {
-    canvas {  /* or some other selector */
-        width: 500px;
-        height: 400px;
+    canvas {
+        margin: auto;
+        margin-top: 5px !important;
+        width: 300px !important;
+        height: 300px !important;
      }
 }

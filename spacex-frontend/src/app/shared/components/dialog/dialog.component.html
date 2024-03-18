@@ -34,7 +34,7 @@
             </div>
             <div class="d-flex flex-wrap">
                 <div *ngFor="let launch of data.launches; index as i" class="border p-1 m-2">
-                    <a href="">{{launch}}</a>
+                    <a href="{{launchURL}}/{{launch}}" target="_blank">{{launch}}</a>
                 </div>
                 <div *ngIf="data.launches?.length === 0">
                     <span class="text-danger">No Launches to display</span>
@@ -45,7 +45,7 @@
             <span class="mt-2 fw-bolder">Rockets</span>
             <span class="mx-3 mt-2">:</span>
             <div *ngFor="let rocket of data.rockets; index as i" class="border p-1 m-2">
-                <a href="">{{rocket}}</a>
+                <a href="{{rocketURL}}/{{rocket}}" target="_blank">{{rocket}}</a>
             </div>
             <div *ngIf="data.rockets?.length === 0" class="mt-2">
                 <span class="text-danger">No Rockets to display</span>

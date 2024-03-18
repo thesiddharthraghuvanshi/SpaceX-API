@@ -24,6 +24,7 @@ import { environment } from '../../../../environments/environment';
 })
 
 export class TableComponent implements OnChanges, AfterViewInit {
+  selectedRowIndex = -1;
   displayedColumns: string[] = ['name', 'region', 'status', 'launches'];
   dataSource!: MatTableDataSource<Launchpad>;
   private googleMapsUrl = environment.googleMapsUrl;
@@ -72,6 +73,7 @@ export class TableComponent implements OnChanges, AfterViewInit {
   }
 
   onRowClick(row: any): void {
+    this.selectedRowIndex = row.id;
     this.rowClickEvent.emit(row);
   }
 

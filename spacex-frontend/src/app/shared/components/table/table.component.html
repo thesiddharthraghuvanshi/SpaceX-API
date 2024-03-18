@@ -50,7 +50,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}"></tr>
 
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell p-3 text-danger" colspan="4">No data matching the filter <span class="fw-bolder">"{{input.value}}"</span></td>
