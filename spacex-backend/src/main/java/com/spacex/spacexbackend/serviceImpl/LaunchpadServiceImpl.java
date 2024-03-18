@@ -58,13 +58,9 @@ public class LaunchpadServiceImpl implements LaunchpadService {
 
     @Override
     public ResponseEntity<LaunchpadEto> fetchOneLaunchpadData(String id) {
-        Optional<Launchpad> launchpad = launchpadRepo.findById(id);
-        if (launchpad.isPresent()) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            LaunchpadEto launchpadEto = objectMapper.convertValue(launchpad, LaunchpadEto.class);
-            return ResponseEntity.ok(launchpadEto);
-        }
-        return ResponseEntity.notFound().build();
+        Optional<Launchpad> launchpadOptional = launchpadRepo.findById(id);
+        return launchpadOptional.map(launchpad -> ResponseEntity.ok(convertToLaunchpadEto(launchpad)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @Override
@@ -90,6 +86,11 @@ public class LaunchpadServiceImpl implements LaunchpadService {
                 .map(launchpad -> objectMapper.convertValue(launchpad, LaunchpadEto.class))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(launchpadEtos);
+    }
+
+    private LaunchpadEto convertToLaunchpadEto(Launchpad launchpad) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(launchpad, LaunchpadEto.class);
     }
 
     @Scheduled(cron = "0 */5 * * * *")
