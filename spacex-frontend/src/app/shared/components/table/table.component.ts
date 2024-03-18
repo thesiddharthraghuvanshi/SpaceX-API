@@ -11,6 +11,7 @@ import { Filters } from '../../models/filters.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogComponent } from '../dialog/dialog.component';
+import { environment } from '../../../../environments/environment';
 
 
 @Component({
@@ -25,6 +26,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class TableComponent implements OnChanges, AfterViewInit {
   displayedColumns: string[] = ['name', 'region', 'status', 'launches'];
   dataSource!: MatTableDataSource<Launchpad>;
+  private googleMapsUrl = environment.googleMapsUrl;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -34,7 +36,7 @@ export class TableComponent implements OnChanges, AfterViewInit {
   @Output() rowClickEvent = new EventEmitter<any>();
   @Input() filters!: Filters;
 
-  constructor(private launchpadService: LaunchpadService,
+  constructor(public launchpadService: LaunchpadService,
     public dialog: MatDialog) {
     this.launchpadService.fetchAllLaunchpads(0, 5).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -85,13 +87,13 @@ export class TableComponent implements OnChanges, AfterViewInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: row
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef?.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   redirectToGoogleMaps(latitude: number, longitude: number): void {
-    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    const googleMapsUrl = `${this.googleMapsUrl}?q=${latitude},${longitude}`;
     window.open(googleMapsUrl, '_blank');
   }
 

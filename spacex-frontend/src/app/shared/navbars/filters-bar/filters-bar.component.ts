@@ -44,5 +44,4 @@ export class FiltersBarComponent implements OnInit {
     this.filtersClickEvent.emit(formData);
   }
 
-
 }

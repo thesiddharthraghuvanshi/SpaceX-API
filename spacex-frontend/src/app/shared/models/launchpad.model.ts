@@ -13,7 +13,6 @@ export class Launchpad {
     launches?: string[];
     rockets?: string[];
 
-
     constructor(id: string, name: string, full_name: string, status: string, locality: string, region: string, timezone: string, 
         latitude: number, longitude: number, launch_attempts: number, launch_successes: number, launches: string[], rockets: string[]) {
         this.id = id;

@@ -13,9 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dialog.component.scss'
 })
 export class DialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Launchpad) {
-    console.log(data);
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Launchpad) { }
 
   getStatusClass(status: string): any {
     return {
