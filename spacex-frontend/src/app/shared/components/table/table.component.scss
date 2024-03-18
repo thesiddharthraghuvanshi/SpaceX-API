@@ -1,3 +1,8 @@
+.mat-elevation-z8 {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 table {
     width: 75%;
     font-family: "courier new", monospace;
@@ -25,4 +30,10 @@ th {
 
 .bi-sign-turn-right-fill:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    table, .mat-elevation-z8 {
+        width: 100%;
+    }
 }
