@@ -14,7 +14,7 @@ export class LaunchpadService {
   constructor(private httpClient: HttpClient) { }
 
   fetchAllLaunchpads(pageNumber: number, records: number): Observable<Launchpad[]> {
-    return this.httpClient.get<Launchpad[]>(`${this.BASE_URL}/fetchAll/${pageNumber}/${records}`).pipe(
+    return this.httpClient.get<Launchpad[]>(`${this.BASE_URL}/fetchAll/${pageNumber}/${records}`, { withCredentials: true }).pipe(
       catchError((error) => {
         console.error('fetchAllLaunchpads API Error:', error);
         return throwError('Error Occured while fetching all Launchpads');
@@ -23,7 +23,7 @@ export class LaunchpadService {
   }
 
   fetchLaunchpad(id: string): Observable<Launchpad> {
-    return this.httpClient.get<Launchpad>(`${this.BASE_URL}/fetch/${id}`).pipe(
+    return this.httpClient.get<Launchpad>(`${this.BASE_URL}/fetch/${id}`, { withCredentials: true }).pipe(
       catchError((error) => {
         console.error('fetchLaunchpad API Error:', error);
         return throwError('Error Occured while fetching a Launchpad');
@@ -38,7 +38,7 @@ export class LaunchpadService {
       .set('name', filters.name || '')
       .set('region', filters.region || '');
 
-    return this.httpClient.get<Launchpad[]>(`${this.BASE_URL}/fetchByFilter`, { params }).pipe(
+    return this.httpClient.get<Launchpad[]>(`${this.BASE_URL}/fetchByFilter`, { params, withCredentials: true }).pipe(
       catchError((error) => {
         console.error('fetchFilteredLaunchpads API Error:', error);
         return throwError('Error Occured while fetching filtered Launchpads');
