@@ -45,8 +45,8 @@ export class PieChartComponent implements OnInit, OnChanges {
           data: this.data,
           label: this.chartLabel,
           backgroundColor: [
-            'rgb(255, 165, 0)',
-            'rgb(60, 179, 113)'
+            'rgba(173, 216, 230, 1)',
+            'rgba(144, 238, 144, 1)'
           ]
         }
       ]

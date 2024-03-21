@@ -45,7 +45,7 @@ describe('TopNavbarComponent', () => {
   it('should contain the correct title in the toolbar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const titleElement = compiled.querySelector('.spacx-app-name');
-    expect(titleElement?.textContent).toContain('SpacX-API');
+    expect(titleElement?.textContent).toContain('SpaceX-API');
   });
 
   it('should toggle sidenav when menu button is clicked', () => {

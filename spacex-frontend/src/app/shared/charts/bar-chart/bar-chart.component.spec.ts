@@ -40,7 +40,7 @@ describe('BarChartComponent', () => {
         {
           data,
           label: chartLabel,
-          backgroundColor: ['rgb(255, 165, 0)', 'rgb(60, 179, 113)'],
+          backgroundColor: ['rgba(173, 216, 230, 1)', 'rgba(144, 238, 144, 1)'],
         },
       ],
     };

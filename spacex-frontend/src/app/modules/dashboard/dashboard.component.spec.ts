@@ -27,10 +27,10 @@ describe('DashboardComponent', () => {
 
   it('should initialize correctly', () => {
     expect(component.datasetLabels).toEqual(['Total Launches', 'Success Launches']);
-    expect(component.data).toEqual([100, 25]);
+    expect(component.data).toEqual([0, 0]);
     expect(component.chartLabel).toEqual('Ratio');
     expect(component.filters).toBeUndefined();
-    expect(component.displayPieChart).toBeTrue();
+    expect(component.displayPieChart).toBeFalse();
   });
 
   it('should load pie chart', () => {

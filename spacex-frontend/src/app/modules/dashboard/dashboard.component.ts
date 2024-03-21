@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DashboardComponent {
   datasetLabels = ['Total Launches', 'Success Launches'];
-  data = [100, 25];
+  data = [0, 0];
   chartLabel = 'Ratio';
   filters!: Filters;
   displayPieChart = false;
